@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/myApp.js"></script>
+</head>
+<body ng-controller="projetoCtrl as ctrl">
+    <div class="jumbotron">
+        <img src="~/Images/linxlog.jpg" /><h3>Lista de Usuário</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Nome:</th>
+                <th>Email:</th>
+                <th>Horas nominais: </th>
+                <th>Horas disponiveis: </th>
+
+            </tr>
+            <tr ng-repeat="x in ctrl.usuario">
+                <td>{{x.Nome}}</td>
+                <td>{{x.Email}}</td>
+                <td>{{x.QtdHorasNominais}}</td>
+                <td>{{x.QtdHorasDisponiveis}}</td>
+            </tr>
+        </table>
+
+        <!--<p>
+            Matricula:  <input class="form-control" type="text" ng-model="usuario.matricula" />
+            Nome:<input class="form-control" type="text" ng-model="usuario.nome" />
+            Email:  <input class="form-control" type="text" ng-model="usuario.email" />
+            <button class="btn btn-primary btn-block" ng-click="adicionarUsuario(usuario)">Adicionar Usuario</button>
+            {{contato}}
+        </p>-->
+ 
+    </div>
+</body>
+</html>

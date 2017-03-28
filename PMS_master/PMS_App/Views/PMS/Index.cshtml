@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/myApp.js"></script>
+</head>
+<body ng-controller="usuariosCtrl as ctrl">
+    <div class="jumbotron">
+        <img src="~/Images/linxlog.jpg" />
+        <h3>Lista de Usuário</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Nome:</th>
+                <th>Email:</th>
+                <th>Quantidade de horas nominais:</th>
+                <th>Quantidade de horas diponiveis:</th>
+
+            </tr>
+            <tr ng-repeat="x in ctrl.usuario">
+                <td>{{x.Nome}}</td>
+                <td>{{x.Email}}</td>
+                <td>{{x.QtdHorasNominais}}</td>
+                <td>{{x.QtdHorasDisponiveis}}</td>
+                <td><button type="button" class="btn btn-primary" ng-click="ctrl.EditarUsuario(x)">Editar</button></td>
+                <td><button type="button" class="btn btn-danger" ng-click="ctrl.DeleteUser(x)">Excluir</button></td>
+            </tr>
+        </table>
+        <hr />
+
+        <hr>
+
+        <table>
+            <tr>
+                <td>Nome:                  <input type="text" name="ctrl.newData.Nome"                value="{{x.Nome}}"                ng-model="ctrl.newData.Nome"                required /></td>
+                <td>Email:                 <input type="text" name="ctrl.newData.Email"               value="{{x.Email}}"               ng-model="ctrl.newData.Email"               required /></td>
+                <td>Qtd Horas Disponiveis: <input type="text" name="ctrl.newData.QtdHorasDisponiveis" value="{{x.QtdHorasDisponiveis}}" ng-model="ctrl.newData.QtdHorasDisponiveis" required /></td>
+                <td>Qtd Horas Nominais:    <input type="text" name="ctrl.newData.QtdHorasNominais"    value="{{x.QtdHorasNominais}}"    ng-model="ctrl.newData.QtdHorasNominais"    required /></td>
+                <td><button type="button" class="btn btn-primary" ng-click="ctrl.AddUsuario()">Add</button></td>
+                
+            </tr>
+        </table>
+ 
+    </div>
+</body>
+</html>
