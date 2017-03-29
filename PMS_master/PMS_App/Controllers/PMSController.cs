@@ -25,14 +25,21 @@ namespace PMS_App.Controllers
             return Json(listUsuario, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetUsuarioId(int Matricula)
+        {
+            PMSDataAccess data = new PMSDataAccess();
+            Usuario usuario = data.PMSlistUsuario.Where(c => c.Matricula == Matricula).SingleOrDefault();
+            return Json(new { usuario = usuario }, JsonRequestBehavior.AllowGet);
+        }
+
 
         public void MyPostAction(Usuario model)
-           {
-               PMSDataAccess dc = new PMSDataAccess();
-               dc.PMSlistUsuario.Add(model);
-               dc.SaveChanges();
+        {
+            PMSDataAccess dc = new PMSDataAccess();
+            dc.PMSlistUsuario.Add(model);
+            dc.SaveChanges();
 
-           }
+        }
 
 
         public void DelUsuarios(Usuario model)
@@ -44,22 +51,18 @@ namespace PMS_App.Controllers
             dc.SaveChanges();
         }
 
-        [HttpPost]
-        public JsonResult SelecionarUsuario(int Matricula)
+        public void AlterUsuarios(Usuario model)
         {
-            PMSDataAccess dc = new PMSDataAccess();
-            Usuario usuario = new Usuario();
-            usuario = dc.PMSlistUsuario.Find(Matricula);
-            return Json(usuario, JsonRequestBehavior.AllowGet);
+            PMSDataAccess data = new PMSDataAccess();
+
+            data.PMSlistUsuario.Attach(model);
+            data.Entry(model).State = EntityState.Modified;
+            data.SaveChanges();
+
         }
 
-        public void EditarUsuario(Usuario model)
-        {
-            PMSDataAccess dc = new PMSDataAccess();
-            dc.Entry(model).State = EntityState.Modified;
-            dc.SaveChanges();
 
-        }            
-        
+
+
     }
 }

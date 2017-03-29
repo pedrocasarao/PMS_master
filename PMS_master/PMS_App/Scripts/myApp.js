@@ -11,21 +11,37 @@ myApp.controller('usuariosCtrl', function ($http) {
             console.log(response);
         });
 
-    
+
     ctrl.AddUsuario = function () {
-        
+
 
         $http.post("/PMS/MyPostAction", ctrl.newData);
+        location.reload();
+        alert("Usuário adicionado com sucesso!");
+
 
     }
 
-    ctrl.DeleteUser = function (user) {
-        $http.post("/PMS/DelUsuarios", user);
+    ctrl.DeleteUser = function () {
+        $http.post("/PMS/DelUsuarios", ctrl.newData);
+        Clear();
+        location.reload();
     }
 
-    ctrl.EditarUsuario = function (user) {
-        
+    ctrl.SelectUser = function (user) {
+        ctrl.newData = user;
     }
+
+    ctrl.AlterUser = function () {
+        $http.post("/PMS/AlterUsuarios", ctrl.newData);
+        Clear();
+        alert("Usuário alterado com sucesso!");
+    }
+
+    function Clear() {
+        ctrl.newData = "";
+    }
+
 
 
 });

@@ -25,13 +25,14 @@
                 <th>Quantidade de horas diponiveis:</th>
 
             </tr>
-            <tr ng-repeat="x in ctrl.usuario">
+            <tr ng-repeat="x in ctrl.usuario" | filter>
+                <td><input type="radio" name="bt" ng-click="ctrl.SelectUser(x)" /></td>
                 <td>{{x.Nome}}</td>
                 <td>{{x.Email}}</td>
                 <td>{{x.QtdHorasNominais}}</td>
                 <td>{{x.QtdHorasDisponiveis}}</td>
-                <td><button type="button" class="btn btn-primary" ng-click="ctrl.EditarUsuario(x)">Editar</button></td>
-                <td><button type="button" class="btn btn-danger" ng-click="ctrl.DeleteUser(x)">Excluir</button></td>
+
+
             </tr>
         </table>
         <hr />
@@ -40,15 +41,17 @@
 
         <table>
             <tr>
-                <td>Nome:                  <input type="text" name="ctrl.newData.Nome"                value="{{x.Nome}}"                ng-model="ctrl.newData.Nome"                required /></td>
-                <td>Email:                 <input type="text" name="ctrl.newData.Email"               value="{{x.Email}}"               ng-model="ctrl.newData.Email"               required /></td>
-                <td>Qtd Horas Disponiveis: <input type="text" name="ctrl.newData.QtdHorasDisponiveis" value="{{x.QtdHorasDisponiveis}}" ng-model="ctrl.newData.QtdHorasDisponiveis" required /></td>
-                <td>Qtd Horas Nominais:    <input type="text" name="ctrl.newData.QtdHorasNominais"    value="{{x.QtdHorasNominais}}"    ng-model="ctrl.newData.QtdHorasNominais"    required /></td>
+                <td>Nome:                  <input type="text" name="ctrl.newData.Nome" ng-model="ctrl.newData.Nome" required /></td>
+                <td>Email:                 <input type="text" name="ctrl.newData.Email" ng-model="ctrl.newData.Email" required /></td>
+                <td>Qtd Horas Disponiveis: <input type="text" name="ctrl.newData.QtdHorasDisponiveis" ng-model="ctrl.newData.QtdHorasDisponiveis" required /></td>
+                <td>Qtd Horas Nominais:    <input type="text" name="ctrl.newData.QtdHorasNominais" ng-model="ctrl.newData.QtdHorasNominais" required /></td>
                 <td><button type="button" class="btn btn-primary" ng-click="ctrl.AddUsuario()">Add</button></td>
-                
+                <td><button type="button" class="btn btn-primary" ng-click="ctrl.AlterUser()">Salvar alterações</button></td>
+                <td><button type="button" class="btn btn-danger" ng-click="ctrl.DeleteUser()">Excluir</button></td>
+
             </tr>
         </table>
- 
+
     </div>
 </body>
 </html>
