@@ -25,8 +25,8 @@
                 <th>Quantidade de horas diponiveis:</th>
 
             </tr>
-            <tr ng-repeat="x in ctrl.usuario" | filter>
-                <td><input type="radio" name="bt" ng-click="ctrl.SelectUser(x)" /></td>
+            <tr ng-repeat="x in ctrl.usuario" ng-click="ctrl.SelectUser(x)" | filter>
+                
                 <td>{{x.Nome}}</td>
                 <td>{{x.Email}}</td>
                 <td>{{x.QtdHorasNominais}}</td>
